@@ -33,6 +33,21 @@
             return num;
         }
 
+        static char GetPlayerSymbol() {
+            switch (currentPlayer) {
+                case 0: 
+                    return 'R';
+                case 1:
+                    return 'B';
+                case 2:
+                    return 'W';
+                case 3:
+                    return 'P';
+                default:
+                    return (char) currentPlayer;
+            }
+        }
+
         static void Main(string[] args)
         {
             Console.WriteLine($"How many players ({MIN_PLAYERS}-{MAX_PLAYERS})?");
@@ -53,9 +68,22 @@
                 --numTiles;
                 nextPlayer();
             }
+            Console.WriteLine($"\n{board}");
 
-            Console.WriteLine(board);
+            while(true) {
+                List<Coordinate> borderHexes = board.GetBorder();
+                Console.WriteLine($"Player {currentPlayer}: Where would you like to place your sheep?");
+                borderHexes.ForEach(hex =>  Console.WriteLine($"{borderHexes.IndexOf(hex)}: {hex}"));
+                int index = getNumberInInterval(0, borderHexes.Count);
+                board.GetCoordinates()[index].SetNumSheep(PILE_SIZE);
+                board.GetCoordinates()[index].SetPlayerSymbol(GetPlayerSymbol());
+                nextPlayer();
+                if (currentPlayer == 0){
+                    break;
+                }
+            }
 
+            Console.WriteLine($"\n{board}");
         }
     }
 }

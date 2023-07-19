@@ -2,8 +2,8 @@ namespace BattleSheep;
 public class Coordinate {
     private int x;
     private int y;
-
     private int numSheep = 0;
+    private char? playerSymbol;
     public Coordinate(int x, int y) {
         this.x = x;
         this.y = y;
@@ -40,6 +40,13 @@ public class Coordinate {
         this.numSheep = numSheep;
     }
     
+        public char? GetPlayerSymbol() {
+        return playerSymbol;
+    }
+
+    public void SetPlayerSymbol(char playerSymbol) {
+        this.playerSymbol = playerSymbol;
+    }
     public static Coordinate Move(Coordinate c, Direction dir, int n, int numSheep = 0) {
         int x = c.GetX();
         int y = c.GetY();
@@ -54,6 +61,11 @@ public class Coordinate {
                 throw new SystemException("Not all cases covered by enum");
         }
         
+    }
+
+    public override string ToString()
+    {
+        return $"({this.x}, {this.y})";
     }
 
     public override bool Equals(Object? obj) {

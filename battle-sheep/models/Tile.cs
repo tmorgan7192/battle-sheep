@@ -58,7 +58,7 @@ public class Tile {
     public override string? ToString()
     {
         string res = "";
-        coordinates.ForEach(c => res += $"({c.GetX()}, {c.GetY()}) ");
+        coordinates.ForEach(c => res += $"{c.ToString()} ");
         return res;
     }
 }

@@ -30,7 +30,7 @@ public class Board {
 
     public List<Tile> ListAdjacentOptions() {
         List<Tile> options = new List<Tile>{};
-        foreach(Coordinate c in GetBorder()) {
+        foreach(Coordinate c in this.GetCoordinates()) {
             foreach(Direction d in Enum.GetValues(typeof(Direction))){
                 foreach(Orientation o in Enum.GetValues(typeof(Orientation))) {
                     Coordinate startingCoordinate = Coordinate.Move(c, d, 1);
@@ -58,8 +58,9 @@ public class Board {
         return coordinates.MaxBy(c => c.GetY()).GetY();
     }
     public Board ChangeCoordinates() {
+
         return new Board(
-            coordinates.ConvertAll(c => new Coordinate(c.GetX() - this.GetMinX(), c.GetY() - this.GetMinY()))
+            coordinates.ConvertAll(c => new Coordinate(c.GetX() - this.GetMinX(), c.GetY() - this.GetMinY(), c.GetNumSheep()))
         );
     }
 
@@ -100,20 +101,20 @@ public class Board {
                     toString[row, col] = " ";
                 }
                 else {
-                    toString[row, col] = "  ";
+                    toString[row, col] = "   ";
                 }
             }
         }
         foreach(Coordinate c in newBoard.coordinates) {
             Console.WriteLine($"{c.ToString()}: {4*c.GetX()},{3*c.GetY()}");
             toString[2*c.GetX() + 0, 2*c.GetY() + 0] = "/";
-            toString[2*c.GetX() + 1, 2*c.GetY() + 0] = "--";
+            toString[2*c.GetX() + 1, 2*c.GetY() + 0] = "---";
             toString[2*c.GetX() + 2, 2*c.GetY() + 0] = "\\";
             toString[2*c.GetX() + 0, 2*c.GetY() + 1] = "|";
-            toString[2*c.GetX() + 1, 2*c.GetY() + 1] = c.GetNumSheep().ToString("D2");
+            toString[2*c.GetX() + 1, 2*c.GetY() + 1] = $"{c.GetNumSheep().ToString("D2")}{c.GetPlayerSymbol().GetValueOrDefault(' ')}";
             toString[2*c.GetX() + 2, 2*c.GetY() + 1] = "|";
             toString[2*c.GetX() + 0, 2*c.GetY() + 2] = "\\";
-            toString[2*c.GetX() + 1, 2*c.GetY() + 2] = "__";
+            toString[2*c.GetX() + 1, 2*c.GetY() + 2] = "___";
             toString[2*c.GetX() + 2, 2*c.GetY() + 2] = "/";
         }
         string res = "";
