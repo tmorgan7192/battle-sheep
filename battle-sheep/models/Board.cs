@@ -60,7 +60,9 @@ public class Board {
     public Board ChangeCoordinates() {
 
         return new Board(
-            coordinates.ConvertAll(c => new Coordinate(c.GetX() - this.GetMinX(), c.GetY() - this.GetMinY(), c.GetNumSheep()))
+            coordinates.ConvertAll(
+                c => new Coordinate(c.GetX() - this.GetMinX(), c.GetY() - this.GetMinY(), c.GetNumSheep(), c.GetPlayerSymbol())
+            )
         );
     }
 
@@ -106,7 +108,6 @@ public class Board {
             }
         }
         foreach(Coordinate c in newBoard.coordinates) {
-            Console.WriteLine($"{c.ToString()}: {4*c.GetX()},{3*c.GetY()}");
             toString[2*c.GetX() + 0, 2*c.GetY() + 0] = "/";
             toString[2*c.GetX() + 1, 2*c.GetY() + 0] = "---";
             toString[2*c.GetX() + 2, 2*c.GetY() + 0] = "\\";

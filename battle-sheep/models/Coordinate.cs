@@ -10,10 +10,11 @@ public class Coordinate {
         this.numSheep = 0;
     }
 
-    public Coordinate(int x, int y, int numSheep) {
+    public Coordinate(int x, int y, int numSheep, char? playerSymbol) {
         this.x = x;
         this.y = y;
         this.numSheep = numSheep;
+        this.playerSymbol = playerSymbol;
     }
 
     public int GetX() {
@@ -47,16 +48,16 @@ public class Coordinate {
     public void SetPlayerSymbol(char playerSymbol) {
         this.playerSymbol = playerSymbol;
     }
-    public static Coordinate Move(Coordinate c, Direction dir, int n, int numSheep = 0) {
+    public static Coordinate Move(Coordinate c, Direction dir, int n, int numSheep = 0, char? playerSymbol = null) {
         int x = c.GetX();
         int y = c.GetY();
         switch(dir) {
             case Direction.STRAIGHTUP:
-                return new Coordinate(x, y + 2 * n, numSheep);
+                return new Coordinate(x, y + 2 * n, numSheep, playerSymbol);
             case Direction.UPLEFT:
-                return new Coordinate(x - n, y + n, numSheep);
+                return new Coordinate(x - n, y + n, numSheep, playerSymbol);
             case Direction.UPRIGHT:
-                return new Coordinate(x + n, y + n, numSheep);
+                return new Coordinate(x + n, y + n, numSheep, playerSymbol);
             default:
                 throw new SystemException("Not all cases covered by enum");
         }
@@ -65,7 +66,7 @@ public class Coordinate {
 
     public override string ToString()
     {
-        return $"({this.x}, {this.y}) sheep: {this.numSheep}, player: {this.playerSymbol}";
+        return $"({this.x}, {this.y})";
     }
 
     public override bool Equals(Object? obj) {

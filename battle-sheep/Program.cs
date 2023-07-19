@@ -75,9 +75,10 @@
                 Console.WriteLine($"Player {currentPlayer}: Where would you like to place your sheep?");
                 borderHexes.ForEach(hex =>  Console.WriteLine($"{borderHexes.IndexOf(hex)}: {hex}"));
                 int index = getNumberInInterval(0, borderHexes.Count);
-                board.GetCoordinates()[index].SetNumSheep(PILE_SIZE);
-                board.GetCoordinates()[index].SetPlayerSymbol(GetPlayerSymbol());
-                Console.WriteLine(board.GetCoordinates()[index]);
+                Coordinate coordinate = borderHexes[index];
+                int boardIndex = board.GetCoordinates().IndexOf(coordinate);
+                board.GetCoordinates()[boardIndex].SetNumSheep(PILE_SIZE);
+                board.GetCoordinates()[boardIndex].SetPlayerSymbol(GetPlayerSymbol());
                 nextPlayer();
                 if (currentPlayer == 0){
                     break;
