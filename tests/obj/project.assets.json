@@ -1712,16 +1712,6 @@
         "build": {
           "build/netcoreapp3.1/xunit.runner.visualstudio.props": {}
         }
-      },
-      "battle-sheep/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v7.0",
-        "compile": {
-          "bin/placeholder/battle-sheep.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/battle-sheep.dll": {}
-        }
       }
     }
   },
@@ -5516,17 +5506,11 @@
         "xunit.runner.visualstudio.2.4.5.nupkg.sha512",
         "xunit.runner.visualstudio.nuspec"
       ]
-    },
-    "battle-sheep/1.0.0": {
-      "type": "project",
-      "path": "../battle-sheep.csproj",
-      "msbuildProject": "../battle-sheep.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net7.0": [
       "Microsoft.NET.Test.Sdk >= 17.5.0",
-      "battle-sheep >= 1.0.0",
       "coverlet.collector >= 3.2.0",
       "xunit >= 2.4.2",
       "xunit.runner.visualstudio >= 2.4.5"
@@ -5556,11 +5540,7 @@
       "frameworks": {
         "net7.0": {
           "targetAlias": "net7.0",
-          "projectReferences": {
-            "C:\\Users\\lf544\\Documents\\Thomas\\battle-sheep\\battle-sheep.csproj": {
-              "projectPath": "C:\\Users\\lf544\\Documents\\Thomas\\battle-sheep\\battle-sheep.csproj"
-            }
-          }
+          "projectReferences": {}
         }
       },
       "warningProperties": {

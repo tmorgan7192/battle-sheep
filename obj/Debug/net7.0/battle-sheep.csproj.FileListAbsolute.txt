@@ -3,3 +3,13 @@ C:\Users\lf544\Documents\Thomas\battle-sheep\obj\Debug\net7.0\battle-sheep.Gener
 C:\Users\lf544\Documents\Thomas\battle-sheep\obj\Debug\net7.0\battle-sheep.AssemblyInfoInputs.cache
 C:\Users\lf544\Documents\Thomas\battle-sheep\obj\Debug\net7.0\battle-sheep.AssemblyInfo.cs
 C:\Users\lf544\Documents\Thomas\battle-sheep\obj\Debug\net7.0\battle-sheep.csproj.CoreCompileInputs.cache
+C:\Users\lf544\Documents\Thomas\battle-sheep\obj\Debug\net7.0\battle-sheep.dll
+C:\Users\lf544\Documents\Thomas\battle-sheep\obj\Debug\net7.0\refint\battle-sheep.dll
+C:\Users\lf544\Documents\Thomas\battle-sheep\obj\Debug\net7.0\battle-sheep.pdb
+C:\Users\lf544\Documents\Thomas\battle-sheep\bin\Debug\net7.0\battle-sheep.exe
+C:\Users\lf544\Documents\Thomas\battle-sheep\bin\Debug\net7.0\battle-sheep.deps.json
+C:\Users\lf544\Documents\Thomas\battle-sheep\bin\Debug\net7.0\battle-sheep.runtimeconfig.json
+C:\Users\lf544\Documents\Thomas\battle-sheep\bin\Debug\net7.0\battle-sheep.dll
+C:\Users\lf544\Documents\Thomas\battle-sheep\bin\Debug\net7.0\battle-sheep.pdb
+C:\Users\lf544\Documents\Thomas\battle-sheep\obj\Debug\net7.0\battle-sheep.genruntimeconfig.cache
+C:\Users\lf544\Documents\Thomas\battle-sheep\obj\Debug\net7.0\ref\battle-sheep.dll
