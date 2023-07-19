@@ -1,0 +1,5 @@
+C:\Users\lf544\Documents\Thomas\battle-sheep\obj\Debug\net7.0\battle-sheep.csproj.AssemblyReference.cache
+C:\Users\lf544\Documents\Thomas\battle-sheep\obj\Debug\net7.0\battle-sheep.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\lf544\Documents\Thomas\battle-sheep\obj\Debug\net7.0\battle-sheep.AssemblyInfoInputs.cache
+C:\Users\lf544\Documents\Thomas\battle-sheep\obj\Debug\net7.0\battle-sheep.AssemblyInfo.cs
+C:\Users\lf544\Documents\Thomas\battle-sheep\obj\Debug\net7.0\battle-sheep.csproj.CoreCompileInputs.cache
