@@ -64,6 +64,8 @@
                 --numTiles;
                 nextPlayer();
             }
+
+            board = board.ChangeCoordinates();
         }
 
         static void placeSheep() {
@@ -92,7 +94,7 @@
 
             placeTiles();
             Console.WriteLine($"\n{board}");
-            
+
             placeSheep();
             Console.WriteLine($"\n{board}");
         }
