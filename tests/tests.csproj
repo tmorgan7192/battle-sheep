@@ -23,7 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\battle-sheep.csproj" />
+    <ProjectReference Include="..\battle-sheep\battle-sheep.csproj" />
   </ItemGroup>
 
 </Project>
