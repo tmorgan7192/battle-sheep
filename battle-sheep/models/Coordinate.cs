@@ -65,7 +65,7 @@ public class Coordinate {
 
     public override string ToString()
     {
-        return $"({this.x}, {this.y})";
+        return $"({this.x}, {this.y}) sheep: {this.numSheep}, player: {this.playerSymbol}";
     }
 
     public override bool Equals(Object? obj) {

@@ -77,6 +77,7 @@
                 int index = getNumberInInterval(0, borderHexes.Count);
                 board.GetCoordinates()[index].SetNumSheep(PILE_SIZE);
                 board.GetCoordinates()[index].SetPlayerSymbol(GetPlayerSymbol());
+                Console.WriteLine(board.GetCoordinates()[index]);
                 nextPlayer();
                 if (currentPlayer == 0){
                     break;
