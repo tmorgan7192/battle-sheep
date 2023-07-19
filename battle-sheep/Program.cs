@@ -48,11 +48,7 @@
             }
         }
 
-        static void Main(string[] args)
-        {
-            Console.WriteLine($"How many players ({MIN_PLAYERS}-{MAX_PLAYERS})?");
-            numPlayers = getNumberInInterval(MIN_PLAYERS, MAX_PLAYERS);
-            currentPlayer = 0;
+        static void placeTiles() {
             int numTiles = numPlayers * 4;
 
             board.PlaceInitialTile();
@@ -68,7 +64,9 @@
                 --numTiles;
                 nextPlayer();
             }
-            Console.WriteLine($"\n{board}");
+        }
+
+        static void placeSheep() {
             List<Coordinate> borderHexes = board.GetBorder();
             while(true) {
                 Console.WriteLine($"Player {currentPlayer}: Where would you like to place your sheep?");
@@ -84,7 +82,18 @@
                     break;
                 }
             }
+        }
 
+        static void Main(string[] args)
+        {
+            Console.WriteLine($"How many players ({MIN_PLAYERS}-{MAX_PLAYERS})?");
+            numPlayers = getNumberInInterval(MIN_PLAYERS, MAX_PLAYERS);
+            currentPlayer = 0;
+
+            placeTiles();
+            Console.WriteLine($"\n{board}");
+            
+            placeSheep();
             Console.WriteLine($"\n{board}");
         }
     }
