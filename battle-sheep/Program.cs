@@ -60,7 +60,9 @@
             NextPlayer();
 
             while (numTiles > 0) {
+                board = board.ChangeCoordinates();
                 List<Tile> adjacentOptions = board.ListAdjacentOptions();
+                Console.WriteLine($"\n{board}");
                 Console.WriteLine($"Player {GetCurrentPlayerSymbol()}: Which tile would you like to add?");
                 adjacentOptions.ForEach(tile =>  Console.WriteLine($"{adjacentOptions.IndexOf(tile)}: {tile}"));
                 int index = GetNumberInInterval(0, adjacentOptions.Count);
