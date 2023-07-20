@@ -117,6 +117,11 @@
             int distance = GetNumberInInterval(1, maxDistance);
         
             Coordinate newHex = Coordinate.Move(hex, d.GetDirection(), distance * d.GetSign(), numSheep, GetPlayerSymbol());
+            int hexIndex = board.GetCoordinates().IndexOf(hex);
+            board.GetCoordinates()[hexIndex].SetNumSheep(board.GetCoordinates()[hexIndex].GetNumSheep() - numSheep);
+            int newHexIndex = board.GetCoordinates().FindIndex(c => c.GetX() == newHex.GetX() && c.GetY() == newHex.GetY());
+            board.GetCoordinates()[newHexIndex].SetNumSheep(numSheep);
+            board.GetCoordinates()[newHexIndex].SetPlayerSymbol(GetPlayerSymbol());
 
             return true;
         }
