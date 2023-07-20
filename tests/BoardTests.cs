@@ -77,4 +77,16 @@ public class BoardTests
         Assert.True(board.GetMinY() == 0, $"Min Y is {board.GetMinY()}, not 0");
         Assert.True(board.GetMaxY() == 10, $"Max Y is {board.GetMaxY()}, not 10");
     }
+
+    [Fact]
+    public void TestPossibleDirections()
+    {
+        Board board = TestBoard();
+        board = board.ChangeCoordinates();
+        List<DirectionVector> possibleDirections = board.GetPossibleDirections(board.GetCoordinates()[0]);
+        // board.GetCoordinates()[0].SetNumSheep(16);
+        // board.GetCoordinates()[0].SetPlayerSymbol('R');
+
+        Assert.True(possibleDirections.Count > 0);
+    }
 }
