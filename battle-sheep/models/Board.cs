@@ -94,29 +94,36 @@ public class Board {
     public override string? ToString()
     {
         Board newBoard = this.ChangeCoordinates();
-        int xMax = 2 * (newBoard.GetMaxX() + 1) + 1;
-        int yMax = 2 * (newBoard.GetMaxY() + 1) + 1;
+        int xMax = 3 * (newBoard.GetMaxX() + 1) + 3;
+        int yMax = 2 * (newBoard.GetMaxY() + 1) + 5;
         string[,] toString = new string[xMax,yMax];
         for(int col=0;col<yMax;col++){  
             for(int row=0;row<xMax;row++){
-                if (row % 2 == 0) {
-                    toString[row, col] = " ";
+                if(row % 3 == 2) {
+                    toString[row, col] = "  ";
                 }
-                else {
-                    toString[row, col] = "   ";
+                else{
+                    toString[row, col] = " ";
                 }
             }
         }
         foreach(Coordinate c in newBoard.coordinates) {
-            toString[2*c.GetX() + 0, 2*c.GetY() + 0] = "/";
-            toString[2*c.GetX() + 1, 2*c.GetY() + 0] = "---";
-            toString[2*c.GetX() + 2, 2*c.GetY() + 0] = "\\";
-            toString[2*c.GetX() + 0, 2*c.GetY() + 1] = "|";
-            toString[2*c.GetX() + 1, 2*c.GetY() + 1] = $"{c.GetNumSheep().ToString("D2")}{c.GetPlayerSymbol().GetValueOrDefault(' ')}";
-            toString[2*c.GetX() + 2, 2*c.GetY() + 1] = "|";
-            toString[2*c.GetX() + 0, 2*c.GetY() + 2] = "\\";
-            toString[2*c.GetX() + 1, 2*c.GetY() + 2] = "___";
-            toString[2*c.GetX() + 2, 2*c.GetY() + 2] = "/";
+            toString[3*c.GetX() + 2, 2*c.GetY() + 0] = "__";
+
+            toString[3*c.GetX() + 1, 2*c.GetY() + 1] = "/";
+            toString[3*c.GetX() + 3, 2*c.GetY() + 1] = "\\";
+
+            toString[3*c.GetX() + 0, 2*c.GetY() + 2] = "/";
+            toString[3*c.GetX() + 2, 2*c.GetY() + 2] = c.GetNumSheep().ToString("D2");
+            toString[3*c.GetX() + 4, 2*c.GetY() + 2] = "\\";
+
+            toString[3*c.GetX() + 0, 2*c.GetY() + 3] = "\\";
+            toString[3*c.GetX() + 2, 2*c.GetY() + 3] = $"{c.GetPlayerSymbol().GetValueOrDefault(' ')}{c.GetPlayerSymbol().GetValueOrDefault(' ')}";
+            toString[3*c.GetX() + 4, 2*c.GetY() + 3] = "/";
+
+            toString[3*c.GetX() + 1, 2*c.GetY() + 4] = "\\";
+            toString[3*c.GetX() + 2, 2*c.GetY() + 4] = "__";
+            toString[3*c.GetX() + 3, 2*c.GetY() + 4] = "/";
         }
         string res = "";
         for(int col=0;col<yMax;col++){  
