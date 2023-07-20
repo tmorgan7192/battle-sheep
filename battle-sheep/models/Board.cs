@@ -83,7 +83,7 @@ public class Board {
     public bool IsOnBorder(Coordinate c) {
         return (
             (new List<int> {GetMaxXInRow(c.GetY()), GetMinXInRow(c.GetY())}).Contains(c.GetX())
-            && (new List<int> {GetMaxYInCol(c.GetX()), GetMinYInCol(c.GetX())}).Contains(c.GetY())
+            || (new List<int> {GetMaxYInCol(c.GetX()), GetMinYInCol(c.GetX())}).Contains(c.GetY())
         );
     }
 
@@ -114,11 +114,11 @@ public class Board {
             toString[3*c.GetX() + 3, 2*c.GetY() + 1] = "\\";
 
             toString[3*c.GetX() + 0, 2*c.GetY() + 2] = "/";
-            toString[3*c.GetX() + 2, 2*c.GetY() + 2] = c.GetNumSheep().ToString("D2");
+            toString[3*c.GetX() + 2, 2*c.GetY() + 2] = c.GetNumSheepString();
             toString[3*c.GetX() + 4, 2*c.GetY() + 2] = "\\";
 
             toString[3*c.GetX() + 0, 2*c.GetY() + 3] = "\\";
-            toString[3*c.GetX() + 2, 2*c.GetY() + 3] = $"{c.GetPlayerSymbol().GetValueOrDefault(' ')}{c.GetPlayerSymbol().GetValueOrDefault(' ')}";
+            toString[3*c.GetX() + 2, 2*c.GetY() + 3] = $"{c.GetPlayerSymbol()}{c.GetPlayerSymbol()}";
             toString[3*c.GetX() + 4, 2*c.GetY() + 3] = "/";
 
             toString[3*c.GetX() + 1, 2*c.GetY() + 4] = "\\";

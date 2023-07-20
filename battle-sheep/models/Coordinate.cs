@@ -37,12 +37,19 @@ public class Coordinate {
         return numSheep;
     }
 
+    public string GetNumSheepString() {
+        if (numSheep == 0) {
+            return "  ";
+        }
+        return numSheep.ToString("D2");
+    }
+
     public void SetNumSheep(int numSheep) {
         this.numSheep = numSheep;
     }
     
-        public char? GetPlayerSymbol() {
-        return playerSymbol;
+        public char GetPlayerSymbol() {
+            return playerSymbol.GetValueOrDefault(' ');
     }
 
     public void SetPlayerSymbol(char playerSymbol) {
