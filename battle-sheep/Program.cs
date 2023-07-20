@@ -88,7 +88,7 @@
 
         static bool MakeMove() {
             List<Coordinate> playerPiles = board.GetPlayerPiles(GetPlayerSymbol());
-            if (playerPiles.Count == 0) {
+            if (playerPiles.Count() == 0) {
                 return false;
             }
 

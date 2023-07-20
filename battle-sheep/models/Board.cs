@@ -129,12 +129,11 @@ public class Board {
     }
 
     public List<Coordinate> GetPlayerPiles(char playerSymbol) {
-        return this.coordinates.FindAll(c => c.GetPlayerSymbol() == playerSymbol && c.GetNumSheep() > 1 && GetPossibleDirections(c).Count > 0);
+        return this.coordinates.FindAll(c => c.GetPlayerSymbol() == playerSymbol && c.GetNumSheep() > 1 && GetPossibleDirections(c).Count() > 0);
     }
 
     public List<DirectionVector> GetPossibleDirections(Coordinate hex) {
         List<DirectionVector> possibleDirections = new List<DirectionVector>{};
-        Console.WriteLine($"Which direction would you like to move?");
         foreach(Direction d in Enum.GetValues(typeof(Direction))){
             if (this.GetMaxDistance(d, hex) > 0) {
                 possibleDirections.Add(new DirectionVector(d, 1));
@@ -148,7 +147,7 @@ public class Board {
 
     public int GetMaxDistance(Direction d, Coordinate c) {
         int n;
-        for(n=0; true; ++n) {
+        for(n=1; true; ++n) {
             Coordinate newCoordinate = Coordinate.Move(c, d, n);
             Coordinate? testCoordinate = coordinates.FirstOrDefault(
                 testC => testC.GetX() == newCoordinate.GetX() && testC.GetY() == newCoordinate.GetY(),
@@ -159,12 +158,12 @@ public class Board {
             }
 
         }
-        return n;
+        return n - 1;
     }
 
         public int GetMaxReverseDistance(Direction d, Coordinate c) {
         int n;
-        for(n=0; true; --n) {
+        for(n=-1; true; --n) {
             Coordinate newCoordinate = Coordinate.Move(c, d, n);
             Coordinate? testCoordinate = coordinates.FirstOrDefault(
                 testC => testC.GetX() == newCoordinate.GetX() && testC.GetY() == newCoordinate.GetY(),
@@ -175,6 +174,6 @@ public class Board {
             }
 
         }
-        return n;
+        return n + 1;
     }
 }
