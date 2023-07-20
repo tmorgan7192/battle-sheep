@@ -138,7 +138,7 @@ public class Board {
             if (this.GetMaxDistance(d, hex) > 0) {
                 possibleDirections.Add(new DirectionVector(d, 1));
             }
-            if (this.GetMaxReverseDistance(d, hex) < 0) {
+            if (this.GetMaxReverseDistance(d, hex) > 0) {
                 possibleDirections.Add(new DirectionVector(d, -1));
             }
         }
@@ -174,6 +174,6 @@ public class Board {
             }
 
         }
-        return n + 1;
+        return -1 * (n + 1);
     }
 }

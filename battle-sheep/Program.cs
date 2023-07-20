@@ -57,7 +57,7 @@
 
             while (numTiles > 0) {
                 List<Tile> adjacentOptions = board.ListAdjacentOptions();
-                Console.WriteLine($"Player {currentPlayer}: Which tile would you like to add?");
+                Console.WriteLine($"Player {GetPlayerSymbol()}: Which tile would you like to add?");
                 adjacentOptions.ForEach(tile =>  Console.WriteLine($"{adjacentOptions.IndexOf(tile)}: {tile}"));
                 int index = GetNumberInInterval(0, adjacentOptions.Count);
                 board.AddTile(adjacentOptions[index]);
@@ -71,7 +71,7 @@
         static void PlaceSheep() {
             List<Coordinate> borderHexes = board.GetBorder();
             while(true) {
-                Console.WriteLine($"Player {currentPlayer}: Where would you like to place your sheep?");
+                Console.WriteLine($"Player {GetPlayerSymbol()}: Where would you like to place your sheep?");
                 borderHexes.ForEach(hex =>  Console.WriteLine($"{borderHexes.IndexOf(hex)}: {hex}"));
                 int index = GetNumberInInterval(0, borderHexes.Count);
                 Coordinate coordinate = borderHexes[index];
@@ -92,7 +92,7 @@
                 return false;
             }
 
-            Console.WriteLine($"Player {currentPlayer}: Which pile would you like to move from?");
+            Console.WriteLine($"Player {GetPlayerSymbol()}: Which pile would you like to move from?");
             playerPiles.ForEach(hex =>  Console.WriteLine($"{playerPiles.IndexOf(hex)}: {hex}"));
             int index = GetNumberInInterval(0, playerPiles.Count);
             Coordinate hex = playerPiles[index];

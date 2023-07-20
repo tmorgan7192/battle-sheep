@@ -52,11 +52,11 @@ public class Coordinate {
         int x = c.GetX();
         int y = c.GetY();
         switch(dir) {
-            case Direction.STRAIGHTUP:
+            case Direction.STRAIGHTDOWN:
                 return new Coordinate(x, y + 2 * n, numSheep, playerSymbol);
-            case Direction.UPLEFT:
+            case Direction.DOWNLEFT:
                 return new Coordinate(x - n, y + n, numSheep, playerSymbol);
-            case Direction.UPRIGHT:
+            case Direction.DOWNRIGHT:
                 return new Coordinate(x + n, y + n, numSheep, playerSymbol);
             default:
                 throw new SystemException("Not all cases covered by enum");
@@ -87,12 +87,12 @@ public class Coordinate {
 
     public bool IsAdjacentTo(Coordinate c) {
         return (
-            this.Equals(Move(c, Direction.STRAIGHTUP, 1)) 
-            || this.Equals(Move(c, Direction.STRAIGHTUP, -1)) 
-            || this.Equals(Move(c, Direction.UPLEFT, 1))
-            || this.Equals(Move(c, Direction.UPLEFT, -1))
-            || this.Equals(Move(c, Direction.UPRIGHT, 1))
-            || this.Equals(Move(c, Direction.UPRIGHT, -1))
+            this.Equals(Move(c, Direction.STRAIGHTDOWN, 1)) 
+            || this.Equals(Move(c, Direction.STRAIGHTDOWN, -1)) 
+            || this.Equals(Move(c, Direction.DOWNLEFT, 1))
+            || this.Equals(Move(c, Direction.DOWNLEFT, -1))
+            || this.Equals(Move(c, Direction.DOWNRIGHT, 1))
+            || this.Equals(Move(c, Direction.DOWNRIGHT, -1))
         );
     }
 

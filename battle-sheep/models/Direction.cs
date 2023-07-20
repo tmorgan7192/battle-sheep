@@ -1,7 +1,7 @@
 namespace BattleSheep;
 
 public enum Direction {
-    STRAIGHTUP,
-    UPLEFT,
-    UPRIGHT
+    STRAIGHTDOWN,
+    DOWNLEFT,
+    DOWNRIGHT
 }

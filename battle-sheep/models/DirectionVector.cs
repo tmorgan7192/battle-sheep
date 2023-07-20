@@ -27,6 +27,26 @@ public class DirectionVector {
 
     public override string ToString()
     {
-        return $"{direction} {sign}";
+        if(direction == Direction.STRAIGHTDOWN && sign == 1){
+            return "Straight Down";
+        }
+        if(direction == Direction.STRAIGHTDOWN && sign == -1){
+            return "Straight Up";
+        }
+        if(direction == Direction.DOWNLEFT && sign == 1){
+            return "Down Left";
+        }
+        if(direction == Direction.DOWNLEFT && sign == -1){
+            return "Up Left";
+        }
+        if(direction == Direction.DOWNRIGHT && sign == 1){
+            return "Down Right";
+        }
+        if(direction == Direction.DOWNRIGHT && sign == -1){
+            return "Up Right";
+        }
+        else{
+            throw new SystemException("DirectionVector missing enum value");
+        }
     }
 }
