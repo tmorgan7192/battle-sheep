@@ -37,13 +37,13 @@ public class DirectionVector {
             return "Down Left";
         }
         if(direction == Direction.DOWNLEFT && sign == -1){
-            return "Up Left";
+            return "Up Right";
         }
         if(direction == Direction.DOWNRIGHT && sign == 1){
             return "Down Right";
         }
         if(direction == Direction.DOWNRIGHT && sign == -1){
-            return "Up Right";
+            return "Up Left";
         }
         else{
             throw new SystemException("DirectionVector missing enum value");

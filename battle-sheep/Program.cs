@@ -33,8 +33,12 @@
             return num;
         }
 
-        static char GetPlayerSymbol() {
-            switch (currentPlayer) {
+        static char GetCurrentPlayerSymbol() {
+            return GetPlayerSymbol(currentPlayer);
+        }
+
+        static char GetPlayerSymbol(int playerNumber){
+            switch (playerNumber) {
                 case 0: 
                     return 'R';
                 case 1:
@@ -57,7 +61,7 @@
 
             while (numTiles > 0) {
                 List<Tile> adjacentOptions = board.ListAdjacentOptions();
-                Console.WriteLine($"Player {GetPlayerSymbol()}: Which tile would you like to add?");
+                Console.WriteLine($"Player {GetCurrentPlayerSymbol()}: Which tile would you like to add?");
                 adjacentOptions.ForEach(tile =>  Console.WriteLine($"{adjacentOptions.IndexOf(tile)}: {tile}"));
                 int index = GetNumberInInterval(0, adjacentOptions.Count);
                 board.AddTile(adjacentOptions[index]);
@@ -71,14 +75,14 @@
         static void PlaceSheep() {
             List<Coordinate> borderHexes = board.GetBorder();
             while(true) {
-                Console.WriteLine($"Player {GetPlayerSymbol()}: Where would you like to place your sheep?");
+                Console.WriteLine($"Player {GetCurrentPlayerSymbol()}: Where would you like to place your sheep?");
                 borderHexes.ForEach(hex =>  Console.WriteLine($"{borderHexes.IndexOf(hex)}: {hex}"));
                 int index = GetNumberInInterval(0, borderHexes.Count);
                 Coordinate coordinate = borderHexes[index];
                 borderHexes.Remove(coordinate);
                 int boardIndex = board.GetCoordinates().IndexOf(coordinate);
                 board.GetCoordinates()[boardIndex].SetNumSheep(PILE_SIZE);
-                board.GetCoordinates()[boardIndex].SetPlayerSymbol(GetPlayerSymbol());
+                board.GetCoordinates()[boardIndex].SetPlayerSymbol(GetCurrentPlayerSymbol());
                 NextPlayer();
                 if (currentPlayer == 0){
                     break;
@@ -87,12 +91,12 @@
         }
 
         static bool MakeMove() {
-            List<Coordinate> playerPiles = board.GetPlayerPiles(GetPlayerSymbol());
+            List<Coordinate> playerPiles = board.GetPlayerPiles(GetCurrentPlayerSymbol());
             if (playerPiles.Count() == 0) {
                 return false;
             }
 
-            Console.WriteLine($"Player {GetPlayerSymbol()}: Which pile would you like to move from?");
+            Console.WriteLine($"Player {GetCurrentPlayerSymbol()}: Which pile would you like to move from?");
             playerPiles.ForEach(hex =>  Console.WriteLine($"{playerPiles.IndexOf(hex)}: {hex}"));
             int index = GetNumberInInterval(0, playerPiles.Count);
             Coordinate hex = playerPiles[index];
@@ -116,12 +120,12 @@
             Console.WriteLine($"How far would you like to move? 1-{maxDistance}");
             int distance = GetNumberInInterval(1, maxDistance);
         
-            Coordinate newHex = Coordinate.Move(hex, d.GetDirection(), distance * d.GetSign(), numSheep, GetPlayerSymbol());
+            Coordinate newHex = Coordinate.Move(hex, d.GetDirection(), distance * d.GetSign(), numSheep, GetCurrentPlayerSymbol());
             int hexIndex = board.GetCoordinates().IndexOf(hex);
             board.GetCoordinates()[hexIndex].SetNumSheep(board.GetCoordinates()[hexIndex].GetNumSheep() - numSheep);
             int newHexIndex = board.GetCoordinates().FindIndex(c => c.GetX() == newHex.GetX() && c.GetY() == newHex.GetY());
             board.GetCoordinates()[newHexIndex].SetNumSheep(numSheep);
-            board.GetCoordinates()[newHexIndex].SetPlayerSymbol(GetPlayerSymbol());
+            board.GetCoordinates()[newHexIndex].SetPlayerSymbol(GetCurrentPlayerSymbol());
 
             return true;
         }
@@ -149,6 +153,28 @@
             }
 
             Console.WriteLine("Game Over!");
+            char winnerSymbol = '~';
+            int maxScore = 0;
+            bool isATie = false;
+            for(int i=0; i<numPlayers; ++i){
+                char playerSymbol = GetPlayerSymbol(i);
+                int score = board.GetScore(playerSymbol);
+                Console.WriteLine($"Player {playerSymbol} scored {score}");
+                if (score > maxScore) {
+                    maxScore = score;
+                    isATie = false;
+                    winnerSymbol = playerSymbol;
+                }
+                else if (score == maxScore) {
+                    isATie = true;
+                }
+            }
+            if (isATie) {
+                Console.WriteLine("It's a tie!");
+            }
+            else {
+                Console.WriteLine($"Player {winnerSymbol} wins!");
+            }
         }
     }
 }

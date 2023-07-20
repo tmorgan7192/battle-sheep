@@ -161,7 +161,7 @@ public class Board {
         return n - 1;
     }
 
-        public int GetMaxReverseDistance(Direction d, Coordinate c) {
+    public int GetMaxReverseDistance(Direction d, Coordinate c) {
         int n;
         for(n=-1; true; --n) {
             Coordinate newCoordinate = Coordinate.Move(c, d, n);
@@ -175,5 +175,8 @@ public class Board {
 
         }
         return -1 * (n + 1);
+    }
+    public int GetScore(char playerSymbol) {
+        return this.coordinates.Count(hex => hex.GetPlayerSymbol() == playerSymbol);
     }
 }
