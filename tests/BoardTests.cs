@@ -85,8 +85,5 @@ public class BoardTests
         board = board.ChangeCoordinates();
         List<DirectionVector> possibleDirections = board.GetPossibleDirections(board.GetCoordinates()[0]);
         Assert.True(possibleDirections.Count > 0);
-        board.GetCoordinates()[0].SetNumSheep(16);
-        board.GetCoordinates()[0].SetPlayerSymbol('R');
-        board.GetMaxDistance()
     }
 }
