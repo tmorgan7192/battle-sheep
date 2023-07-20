@@ -33,22 +33,22 @@
             return num;
         }
 
-        static char GetCurrentPlayerSymbol() {
+        static string GetCurrentPlayerSymbol() {
             return GetPlayerSymbol(currentPlayer);
         }
 
-        static char GetPlayerSymbol(int playerNumber){
+        static string GetPlayerSymbol(int playerNumber){
             switch (playerNumber) {
                 case 0: 
-                    return 'R';
+                    return "PINK";
                 case 1:
-                    return 'B';
+                    return "BLUE";
                 case 2:
-                    return 'W';
+                    return "GRAY";
                 case 3:
-                    return 'P';
+                    return "AQUA";
                 default:
-                    return (char) currentPlayer;
+                    return "ANON";
             }
         }
 
@@ -155,11 +155,11 @@
             }
 
             Console.WriteLine("Game Over!");
-            char winnerSymbol = '~';
+            string winnerSymbol = "NONE";
             int maxScore = 0;
             bool isATie = false;
             for(int i=0; i<numPlayers; ++i){
-                char playerSymbol = GetPlayerSymbol(i);
+                string playerSymbol = GetPlayerSymbol(i);
                 int score = board.GetScore(playerSymbol);
                 Console.WriteLine($"Player {playerSymbol} scored {score}");
                 if (score > maxScore) {

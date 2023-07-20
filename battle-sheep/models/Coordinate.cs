@@ -3,14 +3,14 @@ public class Coordinate {
     private int x;
     private int y;
     private int numSheep = 0;
-    private char? playerSymbol;
+    private string? playerSymbol;
     public Coordinate(int x, int y) {
         this.x = x;
         this.y = y;
         this.numSheep = 0;
     }
 
-    public Coordinate(int x, int y, int numSheep, char? playerSymbol) {
+    public Coordinate(int x, int y, int numSheep, string? playerSymbol) {
         this.x = x;
         this.y = y;
         this.numSheep = numSheep;
@@ -39,23 +39,26 @@ public class Coordinate {
 
     public string GetNumSheepString() {
         if (numSheep == 0) {
-            return "  ";
+            return "    ";
         }
-        return numSheep.ToString("D2");
+        return $" {numSheep.ToString("D2")} ";
     }
 
     public void SetNumSheep(int numSheep) {
         this.numSheep = numSheep;
     }
     
-        public char GetPlayerSymbol() {
-            return playerSymbol.GetValueOrDefault(' ');
+        public string GetPlayerSymbol() {
+            if (playerSymbol != null) {
+                return playerSymbol;
+            };
+            return "    ";
     }
 
-    public void SetPlayerSymbol(char playerSymbol) {
+    public void SetPlayerSymbol(string playerSymbol) {
         this.playerSymbol = playerSymbol;
     }
-    public static Coordinate Move(Coordinate c, Direction dir, int n, int numSheep = 0, char? playerSymbol = null) {
+    public static Coordinate Move(Coordinate c, Direction dir, int n, int numSheep = 0, string? playerSymbol = null) {
         int x = c.GetX();
         int y = c.GetY();
         switch(dir) {

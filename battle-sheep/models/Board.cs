@@ -100,7 +100,7 @@ public class Board {
         for(int col=0;col<yMax;col++){  
             for(int row=0;row<xMax;row++){
                 if(row % 3 == 2) {
-                    toString[row, col] = "  ";
+                    toString[row, col] = "    ";
                 }
                 else{
                     toString[row, col] = " ";
@@ -108,7 +108,7 @@ public class Board {
             }
         }
         foreach(Coordinate c in newBoard.coordinates) {
-            toString[3*c.GetX() + 2, 2*c.GetY() + 0] = "__";
+            toString[3*c.GetX() + 2, 2*c.GetY() + 0] = "____";
 
             toString[3*c.GetX() + 1, 2*c.GetY() + 1] = "/";
             toString[3*c.GetX() + 3, 2*c.GetY() + 1] = "\\";
@@ -118,11 +118,11 @@ public class Board {
             toString[3*c.GetX() + 4, 2*c.GetY() + 2] = "\\";
 
             toString[3*c.GetX() + 0, 2*c.GetY() + 3] = "\\";
-            toString[3*c.GetX() + 2, 2*c.GetY() + 3] = $"{c.GetPlayerSymbol()}{c.GetPlayerSymbol()}";
+            toString[3*c.GetX() + 2, 2*c.GetY() + 3] = c.GetPlayerSymbol();
             toString[3*c.GetX() + 4, 2*c.GetY() + 3] = "/";
 
             toString[3*c.GetX() + 1, 2*c.GetY() + 4] = "\\";
-            toString[3*c.GetX() + 2, 2*c.GetY() + 4] = "__";
+            toString[3*c.GetX() + 2, 2*c.GetY() + 4] = "____";
             toString[3*c.GetX() + 3, 2*c.GetY() + 4] = "/";
         }
         string res = "";
@@ -135,7 +135,7 @@ public class Board {
         return res;
     }
 
-    public List<Coordinate> GetPlayerPiles(char playerSymbol) {
+    public List<Coordinate> GetPlayerPiles(string playerSymbol) {
         return this.coordinates.FindAll(c => c.GetPlayerSymbol() == playerSymbol && c.GetNumSheep() > 1 && GetPossibleDirections(c).Count() > 0);
     }
 
@@ -183,7 +183,7 @@ public class Board {
         }
         return -1 * (n + 1);
     }
-    public int GetScore(char playerSymbol) {
+    public int GetScore(string playerSymbol) {
         return this.coordinates.Count(hex => hex.GetPlayerSymbol() == playerSymbol);
     }
 }
